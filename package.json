@@ -4,9 +4,6 @@
   "displayName": "Jaunty Bear Unity Audio Events",
   "description": "A package for Audio Events management",
   "unity": "2020.3",
-  "dependencies": {
-        "com.unity.addressables": "1.0.0"
-  },
   "author": {
     "name": "Guillaume Lecouteux",
     "url": "https://jauntybear.com"
