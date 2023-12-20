@@ -19,7 +19,7 @@ namespace JauntyBear.UnityAudioEvents
 
         private int _randomIndex;
 
-        public override void Play(AudioSource source)
+        public override void Play(AudioSource source, float runtimeVolume)
         {
             float totalWeight = 0;
             for (int i = 0; i < _weightedAudioEvents.Length; ++i)
@@ -34,7 +34,7 @@ namespace JauntyBear.UnityAudioEvents
                     continue;
                 }
                 _randomIndex = i;
-                _weightedAudioEvents[i].audioEvent.Play(source);
+                _weightedAudioEvents[i].audioEvent.Play(source, runtimeVolume);
                 return;
             }
         }

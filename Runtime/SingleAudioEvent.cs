@@ -13,12 +13,12 @@ namespace JauntyBear.UnityAudioEvents
         [SerializeField] private RangeFloat pitch = new RangeFloat(1f,1f);
         [Range(0f, 1f)]
         [SerializeField] private float chanceOfPlaying = 1f;
-        public override void Play(AudioSource source)
+        public override void Play(AudioSource source, float runtimeVolume)
         {
             if (_audioClip == null || (chanceOfPlaying < 1f && Random.value > chanceOfPlaying))
                 return;
             source.clip = _audioClip;
-            source.volume = volume.RandomInclusive;
+            source.volume = volume.RandomInclusive * runtimeVolume;
             source.pitch = pitch.RandomInclusive;
             source.Play();
         }

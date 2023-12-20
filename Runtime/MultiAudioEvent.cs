@@ -18,13 +18,13 @@ namespace JauntyBear.UnityAudioEvents
 
         private int _randomIndex;
 
-        public override void Play(AudioSource audioSource)
+        public override void Play(AudioSource source, float runtimeVolume)
         {
             if (_audioClips.Count == 0 || (chanceOfPlaying < 1f && Random.value > chanceOfPlaying))
                 return;
             _randomIndex = Random.Range(0, _audioClips.Count);
             audioSource.clip = _audioClips[_randomIndex];
-            audioSource.volume = _volumeRange.RandomInclusive;
+            audioSource.volume = _volumeRange.RandomInclusive * runtimeVolume;
             audioSource.pitch = _pitchRange.RandomInclusive;
             audioSource.Play();
         }

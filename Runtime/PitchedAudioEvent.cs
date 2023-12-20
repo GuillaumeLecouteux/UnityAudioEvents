@@ -24,13 +24,13 @@ namespace JauntyBear.UnityAudioEvents
                 _currentAudiosource.pitch = pitch * _pitch;
         }
 
-        public override void Play(AudioSource source)
+        public override void Play(AudioSource source, float runtimeVolume)
         {
             if (_audioClip == null || (chanceOfPlaying < 1f && Random.value > chanceOfPlaying))
                 return;
             _currentAudiosource = source;
             source.clip = _audioClip;
-            source.volume = _volumeRange.RandomInclusive;
+            source.volume = _volumeRange.RandomInclusive * runtimeVolume;
             source.pitch = _pitch;
             source.Play();
         }
