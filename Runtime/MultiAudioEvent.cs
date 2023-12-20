@@ -23,10 +23,10 @@ namespace JauntyBear.UnityAudioEvents
             if (_audioClips.Count == 0 || (chanceOfPlaying < 1f && Random.value > chanceOfPlaying))
                 return;
             _randomIndex = Random.Range(0, _audioClips.Count);
-            audioSource.clip = _audioClips[_randomIndex];
-            audioSource.volume = _volumeRange.RandomInclusive * runtimeVolume;
-            audioSource.pitch = _pitchRange.RandomInclusive;
-            audioSource.Play();
+            source.clip = _audioClips[_randomIndex];
+            source.volume = _volumeRange.RandomInclusive * runtimeVolume;
+            source.pitch = _pitchRange.RandomInclusive;
+            source.Play();
         }
 
         public override void AddAudioClip(AudioClip newAudioClip)
