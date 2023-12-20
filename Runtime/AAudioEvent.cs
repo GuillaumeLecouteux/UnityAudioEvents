@@ -6,7 +6,6 @@ namespace JauntyBear.UnityAudioEvents
     public abstract class AAudioEvent : ScriptableObject
     {
         public abstract void Play(AudioSource source, float runtimeVolume);
-        public abstract void Play(AudioSource source);
         public abstract void AddAudioClip(AudioClip newAudioClip);
         public abstract float Duration { get; }
 
