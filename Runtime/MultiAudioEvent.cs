@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
-using JauntyBear.UnityData;
 
 namespace JauntyBear.UnityAudioEvents
 {

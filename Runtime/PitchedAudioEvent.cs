@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using JauntyBear.UnityData;
+﻿using UnityEngine;
 
 namespace JauntyBear.UnityAudioEvents
 {

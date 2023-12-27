@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using JauntyBear.UnityData;
 
 namespace JauntyBear.UnityAudioEvents
 {

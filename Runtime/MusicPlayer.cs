@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using JauntyBear.UnityData;
 
 namespace JauntyBear.UnityAudioEvents
 {
@@ -13,7 +12,7 @@ namespace JauntyBear.UnityAudioEvents
         const float MUSIC_VOLUME = 1f;
 
         [Header("Bindings")]
-        [SerializeField] BoolVariable _enableMusic;
+        [SerializeField] bool _enableMusic;
 
         [Header("Settings")]
         [SerializeField] AudioSource[] _musicSources;
@@ -26,7 +25,7 @@ namespace JauntyBear.UnityAudioEvents
         [SerializeField] bool _randomStartingPosition = false;
 
         #region public properties
-        public bool IsMusicEnabled => _enableMusic.Value;
+        public bool IsMusicEnabled => _enableMusic;
         public bool IsMusicFading
         {
             get
@@ -66,21 +65,13 @@ namespace JauntyBear.UnityAudioEvents
         void OnEnable()
         {
             SceneManager.sceneUnloaded += OnSceneUnloaded;
-            _enableMusic.VariableChange += EnableMusicPlauer;
             if (_playOnEnable && IsMusicEnabled)
                 Play();
-        }
-
-        private void Start()
-        {
-            if (_enableMusic == null)
-                Debug.LogError("BoolVariable _enableMusic required");
         }
 
         void OnDisable()
         {
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
-            _enableMusic.VariableChange -= EnableMusicPlauer;
         }
 
         private void OnSceneUnloaded(Scene current)
@@ -89,8 +80,9 @@ namespace JauntyBear.UnityAudioEvents
         }
         #endregion
 
-        public void EnableMusicPlauer(bool enableMusicPlayer)
+        public void EnableMusicPlayer(bool enableMusicPlayer)
         {
+            _enableMusic = enableMusicPlayer;
             if (enableMusicPlayer)
                 Play();
             else
@@ -121,7 +113,7 @@ namespace JauntyBear.UnityAudioEvents
         private IEnumerator LoadAndPlayCo(string audioClipKey)
         {
             yield return StartCoroutine(LoadMusicCo(audioClipKey));
-            if (!_enableMusic.Value)
+            if (!_enableMusic)
             {
                 yield return null; // music disabled, exit
             }
@@ -207,7 +199,7 @@ namespace JauntyBear.UnityAudioEvents
 
         public void ResumeMusic()
         {
-            if (!_enableMusic.Value) return; // music disabled
+            if (!_enableMusic) return; // music disabled
             _musicSources[_activeMusicSourceIndex].Play();
         }
 
