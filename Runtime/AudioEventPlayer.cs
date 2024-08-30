@@ -33,6 +33,11 @@ namespace JauntyBear.UnityAudioEvents
                 Play();
         }
 
+ 	public void SetAudioEvent(AAudioEvent audioEvent)
+	{
+	    _audioEvent=audioEvent;
+	}
+
         public void Play()
         {
             if (_audioEvent != null && enabled == true)
