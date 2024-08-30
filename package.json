@@ -1,6 +1,6 @@
 {
   "name": "com.jauntybear.audioevents",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "displayName": "Jaunty Bear Unity Audio Events",
   "description": "A package for Audio Events management",
   "unity": "2020.3",
